@@ -34,6 +34,7 @@ func (s *server) GetDemo(ctx context.Context, in *pb.GetDemoReq) (*pb.GetDemoRep
 func main() {
 	flag.Parse()
 	// lis, err := net.Listen("tcp", port)
+	// socket = fmt.Sprintf("172.20.131.130:%d", *port)
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
