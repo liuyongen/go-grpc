@@ -2,14 +2,20 @@ package main
 
 import (
 	"context"
+	"flag"
+	"fmt"
 	pb "gogrpc/example"
 	"google.golang.org/grpc"
 	"log"
 	"net"
 )
 
-const (
+/*const (
 	port = ":50051"
+)*/
+
+var (
+	port = flag.Int("port", 50051, "The server port")
 )
 
 type server struct {
@@ -26,8 +32,9 @@ func (s *server) GetDemo(ctx context.Context, in *pb.GetDemoReq) (*pb.GetDemoRep
 }
 
 func main() {
-
-	lis, err := net.Listen("tcp", port)
+	flag.Parse()
+	// lis, err := net.Listen("tcp", port)
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
