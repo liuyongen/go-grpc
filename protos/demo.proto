@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package Hello;
+option go_package = "example/";
+service Demo {
+    rpc GetDemo (GetDemoReq) returns (GetDemoReply) {}
+}
+
+message GetDemoReq {
+    int64 user_id = 1;
+}
+
+message GetDemoReply {
+    int64 user_id = 1;
+}
